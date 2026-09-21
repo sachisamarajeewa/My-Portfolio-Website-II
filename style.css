@@ -24,6 +24,7 @@
 
   --font-heading: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-number: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   --nav-height: 80px;
   --radius-sm: 8px;
@@ -34,7 +35,9 @@
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -537,18 +540,20 @@ img {
 }
 
 .stat-count {
-  font-family: var(--font-heading);
-  font-size: 1.85rem;
-  font-weight: 800;
+  font-family: var(--font-number);
+  font-size: 4.25rem;
+  font-weight: 600;
   line-height: 1;
   color: #fff;
   display: inline-block;
+  font-feature-settings: 'tnum' on, 'lnum' on;
 }
 
 .stat-plus {
+  font-family: var(--font-number);
   font-size: 1.5rem;
   color: var(--fire-1);
-  font-weight: 800;
+  font-weight: 600;
   margin-left: 1px;
 }
 
@@ -665,7 +670,7 @@ img {
   height: 410px;
   border-radius: 50%;
   border: 4px solid #fff;
-  box-shadow: 
+  box-shadow:
     0 0 15px #fff,
     0 0 35px var(--fire-1),
     0 0 65px var(--fire-2),
@@ -1121,11 +1126,12 @@ img {
 }
 
 .metric-val {
-  font-family: var(--font-heading);
-  font-size: 1.85rem;
-  font-weight: 800;
+  font-family: var(--font-number);
+  font-size: 3.85rem;
+  font-weight: 600;
   color: #fff;
   margin-bottom: 0.25rem;
+  font-feature-settings: 'tnum' on, 'lnum' on;
 }
 
 .metric-lbl {
@@ -1198,11 +1204,12 @@ img {
   position: absolute;
   top: 2rem;
   right: 2.5rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-number);
   font-size: 2.5rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.08);
   transition: color 0.4s;
+  letter-spacing: -0.02em;
 }
 
 .service-card:hover .service-num {
@@ -1319,8 +1326,10 @@ img {
 }
 
 .skill-percent {
+  font-family: var(--font-number);
   color: var(--fire-1);
-  font-weight: 700;
+  font-weight: 600;
+  font-feature-settings: 'tnum' on, 'lnum' on;
 }
 
 .skill-track {
@@ -1409,11 +1418,12 @@ img {
   position: absolute;
   top: 1.25rem;
   left: 1.5rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-number);
   font-size: 1.1rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
   z-index: 3;
+  letter-spacing: -0.02em;
 }
 
 /* Mockup UI Window */
@@ -1451,9 +1461,18 @@ img {
   height: 7px;
   border-radius: 50%;
 }
-.mock-dot.red { background: #ff5f56; }
-.mock-dot.yellow { background: #ffbd2e; }
-.mock-dot.green { background: #27c93f; }
+
+.mock-dot.red {
+  background: #ff5f56;
+}
+
+.mock-dot.yellow {
+  background: #ffbd2e;
+}
+
+.mock-dot.green {
+  background: #27c93f;
+}
 
 .mock-bar {
   width: 90px;
@@ -1517,9 +1536,23 @@ img {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.08);
 }
-.mock-bubble.left { width: 50%; align-self: flex-start; }
-.mock-bubble.left.wide { width: 75%; align-self: flex-start; }
-.mock-bubble.right { width: 60%; align-self: flex-end; background: var(--fire-2); opacity: 0.8; }
+
+.mock-bubble.left {
+  width: 50%;
+  align-self: flex-start;
+}
+
+.mock-bubble.left.wide {
+  width: 75%;
+  align-self: flex-start;
+}
+
+.mock-bubble.right {
+  width: 60%;
+  align-self: flex-end;
+  background: var(--fire-2);
+  opacity: 0.8;
+}
 
 .mock-prompt-pill {
   height: 22px;
@@ -1891,10 +1924,13 @@ img {
 
 /* ─── Keyframe Animations ───────────────────────────────── */
 @keyframes pulseDot {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.3);
     opacity: 0.7;
@@ -1906,6 +1942,7 @@ img {
     transform: translate(-50%, -50%) scale(0.96);
     opacity: 0.7;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.08);
     opacity: 0.95;
@@ -1915,16 +1952,17 @@ img {
 @keyframes ringBreath {
   0% {
     transform: translate(-50%, -50%) scale(0.98);
-    box-shadow: 
+    box-shadow:
       0 0 15px #fff,
       0 0 35px var(--fire-1),
       0 0 65px var(--fire-2),
       0 0 100px var(--fire-3),
       inset 0 0 25px var(--fire-1);
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.03);
-    box-shadow: 
+    box-shadow:
       0 0 22px #fff,
       0 0 50px var(--fire-1),
       0 0 90px var(--fire-2),
@@ -1934,18 +1972,33 @@ img {
 }
 
 @keyframes rotateFlares {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes floatTop {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-12px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes floatBottom {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(12px); }
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(12px);
+  }
 }
 
 @keyframes scrollWheel {
@@ -1953,10 +2006,12 @@ img {
     transform: translateY(0);
     opacity: 1;
   }
+
   80% {
     transform: translateY(10px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 0;
@@ -1975,10 +2030,21 @@ img {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.22s; }
-.reveal-delay-3 { transition-delay: 0.32s; }
-.reveal-delay-4 { transition-delay: 0.42s; }
+.reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.22s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.32s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.42s;
+}
 
 /* ─── Responsive Media Queries ──────────────────────────── */
 @media (max-width: 1200px) {
@@ -1986,22 +2052,27 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+
   .eclipse-stage {
     width: 440px;
     height: 440px;
   }
+
   .halo-ring {
     width: 350px;
     height: 350px;
   }
+
   .halo-corona {
     width: 400px;
     height: 400px;
   }
+
   .hero-portrait-wrapper {
     width: 380px;
     height: 460px;
   }
+
   .vertical-marquee-track {
     right: -30px;
   }
@@ -2011,9 +2082,11 @@ img {
   .nav {
     padding: 0 2rem;
   }
+
   .nav-links {
     display: none;
   }
+
   .mobile-menu-btn {
     display: flex;
   }
@@ -2093,14 +2166,17 @@ img {
     width: 320px;
     height: 320px;
   }
+
   .halo-ring {
     width: 270px;
     height: 270px;
   }
+
   .halo-corona {
     width: 300px;
     height: 300px;
   }
+
   .hero-portrait-wrapper {
     width: 290px;
     height: 360px;
@@ -2158,61 +2234,36 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   text-align: center;
   position: relative;
 }
 
-.preloader-eclipse {
+.preloader-percent-wrap {
   position: relative;
-  width: 170px;
-  height: 170px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
 }
 
-.preloader-corona {
-  position: absolute;
-  inset: -15px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 85, 0, 0.7) 0%, rgba(255, 45, 0, 0.3) 50%, transparent 75%);
-  filter: blur(16px);
-  animation: coronaPulse 2s infinite alternate ease-in-out;
-}
-
-.preloader-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 
-    0 0 15px #fff,
-    0 0 30px var(--fire-1),
-    0 0 55px var(--fire-2),
-    inset 0 0 20px var(--fire-1);
-  animation: ringBreath 2.5s infinite alternate ease-in-out;
-}
-
-.preloader-percent-wrap {
-  position: relative;
-  z-index: 3;
-}
-
 .preloader-percent {
-  font-family: var(--font-heading);
-  font-size: 2.8rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff 0%, var(--fire-1) 70%, var(--fire-2) 100%);
+  font-family: var(--font-number);
+  font-weight: 600;
+  /* semi-bold */
+  font-size: clamp(4rem, 9vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.75) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 25px rgba(255, 77, 0, 0.6);
-  letter-spacing: -0.02em;
+  text-shadow: 0 0 35px rgba(255, 77, 0, 0.35);
+  font-feature-settings: 'tnum' on, 'lnum' on;
 }
 
 .preloader-progress-track {
-  width: 220px;
+  width: 240px;
   height: 4px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-pill);
@@ -2294,6 +2345,7 @@ img {
     width: 44px;
     height: 44px;
   }
+
   .scroll-to-top-btn svg {
     width: 18px;
     height: 18px;
