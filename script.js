@@ -56,7 +56,7 @@
     const ctx = canvas.getContext('2d');
     let width, height;
     let particles = [];
-    const PARTICLE_COUNT = 65;
+    const PARTICLE_COUNT = window.innerWidth < 768 ? 55 : 85;
 
     function resizeCanvas() {
       width = canvas.width = window.innerWidth;
@@ -108,8 +108,8 @@
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color + this.opacity + ')';
-        ctx.shadowBlur = this.size * 5;
-        ctx.shadowColor = '#ff4d00';
+        ctx.shadowBlur = this.size * 6;
+        ctx.shadowColor = '#ff6a00';
         ctx.fill();
         ctx.restore();
       }
@@ -342,6 +342,12 @@
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', toggleMobileNav);
   }
+
+  // Close mobile drawer when any link inside it is tapped
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-talk-btn');
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', closeMobileNav);
+  });
 
   // ─── 9. Form Submission Handler ───────────────────────────
   window.handleFormSubmit = function (event) {
